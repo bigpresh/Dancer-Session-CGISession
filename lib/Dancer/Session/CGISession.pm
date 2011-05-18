@@ -33,13 +33,6 @@ sub session_name {
         setting('session_name') || 'CGISESSID';
 }
 
-sub create {
-    my ($class) = @_;
-
-    my $self = Dancer::Session::Storable->new;
-    $self->flush;
-    return $self;
-}
 
 sub init {
         my ($self) = @_;
