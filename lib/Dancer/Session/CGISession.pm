@@ -30,33 +30,33 @@ our $session_driver_params;
 
 # Default to a cookie named CGISESSID, for CGI::Session compatibility.
 sub session_name {
-        setting('session_name') || 'CGISESSID';
+    setting('session_name') || 'CGISESSID';
 }
 
 
 sub init {
-        my ($self) = @_;
+    my ($self) = @_;
 
-        croak "CGI::Session is needed and is not installed"
-            unless Dancer::ModuleLoader->load('CGI::Session');
+    croak "CGI::Session is needed and is not installed"
+        unless Dancer::ModuleLoader->load('CGI::Session');
 
-        my $session_driver = 'driver:'
-            . ( setting('cgisession_driver') || 'File' );
-        my $session_driver_params = setting('cgisession_driver_params') || {};
+    my $session_driver = 'driver:'
+        . ( setting('cgisession_driver') || 'File' );
+    my $session_driver_params = setting('cgisession_driver_params') || {};
 
-        # If it's the 'File' driver, make sure the session dir is used:
-        if ($session_driver eq 'File') {
-            # Default session storage dir
-            my $session_dir = setting('session_dir')
-                || path(setting('appdir'), 'sessions');
+    # If it's the 'File' driver, make sure the session dir is used:
+    if ($session_driver eq 'File') {
+        # Default session storage dir
+        my $session_dir = setting('session_dir')
+            || path(setting('appdir'), 'sessions');
 
-            # Make sure that dir exiats
-            if (!-d $session_dir) {
-                mkdir $session_dir
-                    or croak "session_dir $session_dir cannot be created";
-            }
-            $session_driver_params->{Directory} ||= $session_dir;
+        # Make sure that dir exiats
+        if (!-d $session_dir) {
+            mkdir $session_dir
+                or croak "session_dir $session_dir cannot be created";
         }
+        $session_driver_params->{Directory} ||= $session_dir;
+    }
 }
 
 sub retrieve {
