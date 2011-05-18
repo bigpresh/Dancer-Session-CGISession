@@ -3,7 +3,7 @@ package Dancer::Session::CGISession;
 use warnings;
 use strict;
 use base 'Dancer::Session::Abstract';
-
+use Carp;
 use Dancer::Config 'setting';
 use Dancer::FileUtils 'path';
 
