@@ -45,7 +45,7 @@ sub init {
     my $session_driver_params = setting('cgisession_driver_params') || {};
 
     # If it's the 'File' driver, make sure the session dir is used:
-    if ($session_driver eq 'File') {
+    if ($session_driver eq 'driver:File') {
         # Default session storage dir
         my $session_dir = setting('session_dir')
             || path(setting('appdir'), 'sessions');
