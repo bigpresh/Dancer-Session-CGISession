@@ -7,7 +7,6 @@ use base 'Dancer::Session::Abstract';
 use Dancer::Config 'setting';
 use Dancer::FileUtils 'path';
 
-use CGI::Session;
 
 =head1 NAME
 
@@ -37,12 +36,9 @@ sub session_name {
 sub create {
     my ($class) = @_;
 
-        my $self = Dancer::Session::Storable->new;
-        $self->flush;
-        return $self;
-
-    my $self = bless {}, $class;
-    $self->{cgisession} = CGI::Session_>new;
+    my $self = Dancer::Session::Storable->new;
+    $self->flush;
+    return $self;
 }
 
 sub init {
