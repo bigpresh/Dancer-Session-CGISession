@@ -73,7 +73,7 @@ sub retrieve {
         $session_driver, $id, $session_driver_params
     );
     my $self = $class->new;
-    $self->{cgisession} => $session;
+    $self->{cgisession} = $session;
     return $self;
 }
 
