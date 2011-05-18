@@ -41,8 +41,8 @@ sub init {
             unless Dancer::ModuleLoader->load('CGI::Session');
 
         my $session_driver = 'driver:'
-            . ( settings('cgisession_driver') || 'File' );
-        my $session_driver_params = settings('cgisession_driver_params') || {};
+            . ( setting('cgisession_driver') || 'File' );
+        my $session_driver_params = setting('cgisession_driver_params') || {};
 
         # If it's the 'File' driver, make sure the session dir is used:
         if ($session_driver eq 'File') {
