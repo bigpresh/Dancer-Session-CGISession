@@ -57,7 +57,6 @@ sub init {
             }
             $session_driver_params->{Directory} ||= $session_dir;
         }
-        $self->id(build_id());
 }
 
 sub retrieve {
